@@ -3,10 +3,15 @@
   "name": "jig",
   "version": "0.1.0",
   "main": "jig.js",
-  "description": "Connect middleware to easily proxy/route HTTP requests according to the subdomain of their URL.",
-  "url" : "http://github.com/owner/project/issues"  
+  "description": "Connect middleware to easily reverse-proxy and route HTTP requests according to subdomain",
+  "repository"     : {
+    "type" : "git",
+    "url" : "https://github.com/loudwinston/jig.git"
+  },
+
   "keywords": [
     "subdomain",
+    "reverse",
     "proxy",
     "router",
     "middleware",
@@ -14,9 +19,9 @@
     "express"
   ],
   "dependencies": {
-    "http-proxy": "~1.0.2"
+    "http-proxy": ">=1.1.6"
   },
   "engines": {
-    "node": "*"
+    "node": ">=0.10.0"
   }
 }

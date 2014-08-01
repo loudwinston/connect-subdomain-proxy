@@ -1,17 +1,17 @@
 //This is just a testing file
 //TODO: Write better tests
-
-
 var http = require('http');
 var fs = require("fs");
 var express = require("express");
+var jig = require("./jig.js");
+
 
 var FILE = "config.sample.json";
 
 
 var config = JSON.parse(fs.readFileSync(FILE));
 
-var router = new require("./jig.js").Parse(config);
+var router = new jig(config);
 
 
 //Create fake app

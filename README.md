@@ -11,10 +11,8 @@ This project uses the excellent [node-http-proxy](https://github.com/nodejitsu/n
 ###Features
 
 1. Simple configuration via JSON
-2. Supports websockets
+1. Supports websockets
 1. Non-matching requests sent to a default route, or handled by express application (pass-through)
-
-
 
 ###Simple Configuration Example
 	{

@@ -1,7 +1,6 @@
 var fs = require("fs");
 var http = require('http');
 var httpProxy = require('http-proxy');
-var Q = require("q");
 
 
 var router = function(config) {	
@@ -14,6 +13,8 @@ var router = function(config) {
 	var routes = [];
 
 
+	//TODO: Convert routes to regex for easier matching
+	//TODO: Create a map/lookup table so we don't have to iterate over all routes
 	var getConfigForRequest = function(req) {
 		var host = req.headers.host;
 
@@ -26,28 +27,6 @@ var router = function(config) {
 		return defaultRoute;
 	}
 
-
-	var proxy = httpProxy.createProxyServer({});
-	proxy.on('upgrade', function (req, socket, head) {
-	  proxy.ws(req, socket, head);
-	});
-	//TODO: better handling of errors
-	proxy.on('error', function(err) {
-		throw new Error(err);
-	});
-
-	//TODO: Check the configuration file before parsing
-	if (config) {
-		config.routes.forEach(function(route) {
-		if (route.domain) {
-				this.add(route);
-			}
-		});
-	}
-
-	
-	
-	
 	
 	this.middleware = function(req,res,next) {
 		var config = getConfigForRequest(req);
@@ -76,7 +55,26 @@ var router = function(config) {
 			pathMap[route.path] = route;
 		}	
 	}
+
+
+
+
+
+
+	var proxy = httpProxy.createProxyServer({});
+	proxy.on('upgrade', function (req, socket, head) {
+	  proxy.ws(req, socket, head);
+	});
 	
+	//Rethrow proxy errors, let the application handle them
+	proxy.on('error', function(err) { throw new Error(err); });
+
+	//TODO: Check the configuration file before parsing
+	if (config) {
+		config.routes.forEach(function(route) {
+			self.add(route);
+		});
+	}
 	return this;
 }
 
