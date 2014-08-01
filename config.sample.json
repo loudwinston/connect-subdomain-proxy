@@ -1,0 +1,8 @@
+{
+	"routes": [
+		{ "domain": "dev",  "port": 3000 },
+		{ "domain": "test", "port": 4000 },
+		{ "domain": "prod", "host": "localhost", "port": 5000, "default": true }
+	]
+}
+

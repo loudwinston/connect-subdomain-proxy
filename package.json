@@ -1,0 +1,22 @@
+{
+  "author": "Kevin Mitchell <kevin@objectloft.com>",
+  "name": "jig",
+  "version": "0.1.0",
+  "main": "jig.js",
+  "description": "Connect middleware to easily proxy/route HTTP requests according to the subdomain of their URL.",
+  "url" : "http://github.com/owner/project/issues"  
+  "keywords": [
+    "subdomain",
+    "proxy",
+    "router",
+    "middleware",
+    "connect",
+    "express"
+  ],
+  "dependencies": {
+    "http-proxy": "~1.0.2"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
